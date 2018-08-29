@@ -50,6 +50,76 @@ void insert(int info)
   }
 }
 
+//insert after given position
+void insertAt(int info, int pos)
+{
+  // pos value meanings: -1 = at last, 0 = at first, n = after nth position
+
+  mynode *new = (mynode *)malloc(sizeof(mynode));
+
+  new->info = info;
+  new->rlink = NULL;
+  new->llink = NULL;
+
+  if(pos == 0){
+    //insert at first position
+    if (start == NULL)
+      start = new;
+    else
+    {
+      new->rlink = start;
+      start->llink = new;
+      start = new;
+    }
+  }
+  else if(pos == -1){
+    //insert at last position
+    if (start == NULL)
+      start = new;
+    else
+    {
+      mynode *ptr = start;
+      while (ptr->rlink != NULL)
+        ptr = ptr->rlink;
+      new->llink = ptr;
+      ptr->rlink = new;
+    }
+  }
+  else{
+    int i = 1;
+    mynode *ptr = start;
+    while(i<pos && ptr!=NULL){
+      if(ptr->rlink == NULL)
+        break;
+      ptr = ptr->rlink;
+      i++;
+    }
+
+    //check empty condition
+    if(ptr == NULL)
+      printf("Position not Valid");
+    else if(i==pos){
+      if(ptr->rlink == NULL)
+      {
+        //last position
+        new->llink = ptr;
+        new->rlink = NULL;
+        ptr->rlink = new;
+      }
+      else
+      {
+        //not last position
+        new->llink = ptr;
+        new->rlink = ptr->rlink;
+        ptr->rlink = new;
+      }
+    }
+    else
+      printf("Position not Valid");
+  }
+}
+
+
 // delete at last position
 void del()
 {
@@ -112,11 +182,11 @@ void search()
 int main()
 {
 
-  int choice, info;
+  int choice, info, pos;
 
   do
   {
-    printf("\n\n\nEnter Choice : \n1.Insert\n2.Display\n3.Delete\n4.Search\n5.Exit\n");
+    printf("\n\n\nEnter Choice : \n1.Insert\n2.Insert at particular position\n3.Display\n4.Delete\n5.Search\n6.Exit\n");
     scanf("%d", &choice);
 
     switch (choice)
@@ -129,20 +199,29 @@ int main()
       display();
       break;
     case 2:
+      printf("\nEnter position :");
+      scanf("%d", &pos);
+      printf("Enter value :");
+      scanf("%d", &info);
       system("@cls||clear");
+      insertAt(info, pos);
       display();
       break;
     case 3:
-      system("@cls||clear");
-      del();
       system("@cls||clear");
       display();
       break;
     case 4:
       system("@cls||clear");
-      search();
+      del();
+      system("@cls||clear");
+      display();
       break;
     case 5:
+      system("@cls||clear");
+      search();
+      break;
+    case 6:
       return 0;
     default:
       printf("\nWrong Choice\n");
@@ -152,3 +231,5 @@ int main()
 
   return 0;
 }
+
+
