@@ -10,7 +10,9 @@ typedef struct node
 
 mynode *start = NULL;
 
-// display the list
+// Function Definitions ////////////////////////////////////////////////////////////
+
+// display the linked list
 void display()
 {
   if (start == NULL)
@@ -27,9 +29,24 @@ void display()
     printf(" end\n");
   }
 }
+//insert a node at first position
+void insertAtFirst(int info)
+{
+  mynode *new = (mynode *)malloc(sizeof(mynode));
 
-//insert at last position
-void insert(int info)
+  new->info = info;
+  new->link = NULL;
+
+  if (start == NULL)
+    start = new;
+  else
+  {
+    new->link = start;
+    start = new;
+  }
+}
+//insert a node at last position
+void insertAtLast(int info)
 {
   mynode *new = (mynode *)malloc(sizeof(mynode));
 
@@ -46,7 +63,6 @@ void insert(int info)
     ptr->link = new;
   }
 }
-
 //insert after given key
 void insertAfterKey(int info, int key)
 {
@@ -56,34 +72,47 @@ void insertAfterKey(int info, int key)
   new->link = NULL;
 
   if (start == NULL)
-    printf("\n\nEmpty List\n");
-  else {
+    printf("\n\nCan't perform this operation");
+  else
+  {
     mynode *ptr = start;
     while (ptr->info != key && ptr->link != NULL)
       ptr = ptr->link;
-    
+
     //If key not found
-    if(ptr->info != key)
+    if (ptr->info != key)
       printf("\n\nKey not Found\n");
-    else {
+    else
+    {
       new->link = ptr->link;
-      ptr->link =new;
+      ptr->link = new;
     }
   }
-
 }
-
-// delete at last position
-void del()
+// delete at first position
+void deleteAtFirst()
 {
   if (start == NULL)
-    printf("\n\nEmpty List\n");
+    printf("\n\nCan't perform this operation");
+  else
+  {
+    mynode *temp = start;
+    start = start->link;
+    free(temp);
+  }
+}
+// delete at last position
+void deleteAtLast()
+{
+  if (start == NULL)
+    printf("\n\nCan't perform this operation");
   else
   {
     mynode *ptr1 = start;
     mynode *ptr2 = NULL;
 
-    while (ptr1->link != NULL) {
+    while (ptr1->link != NULL)
+    {
       ptr2 = ptr1;
       ptr1 = ptr1->link;
     }
@@ -98,48 +127,46 @@ void del()
     free(temp);
   }
 }
-
 // delete whose key info is given
-void delKey(key)
+void deleteKey(int key)
 {
   if (start == NULL)
-    printf("\n\nEmpty List\n");
+    printf("\n\nCan't perform this operation");
   else
   {
     mynode *ptr1 = start;
     mynode *ptr2 = NULL;
 
-    while (ptr1->info != key && ptr1->link != NULL) {
+    while (ptr1->info != key && ptr1->link != NULL)
+    {
       ptr2 = ptr1;
       ptr1 = ptr1->link;
     }
 
     //If key not found
-    if(ptr1->info != key)
-      printf("\n\nKey not Found\n");
-    else {
+    if (ptr1->info != key)
+      printf("\n\nKey not Found");
+    else
+    {
       mynode *temp = ptr1;
 
       // check if only one element is present
       if (ptr1 == start && ptr1->link == NULL)
         start = NULL;
       // check if key is first element
-      else if(ptr1 == start && ptr1->link != NULL){
+      else if (ptr1 == start && ptr1->link != NULL)
         start = ptr1->link;
-      }
       else
         ptr2->link = ptr1->link;
       free(temp);
-        
     }
   }
 }
-
 // search an element and show its position
 void search()
 {
   if (start == NULL)
-    printf("\n\nEmpty List\n");
+    printf("\n\nEmpty List");
   else
   {
     int item;
@@ -168,6 +195,8 @@ void search()
   }
 }
 
+
+
 int main()
 {
 
@@ -175,7 +204,10 @@ int main()
 
   do
   {
-    printf("\n\n\nEnter Choice : \n1.Insert\n2.Insert after key\n3.Display\n4.Delete last\n5.Delete key\n6.Search\n7.Exit\n");
+    printf("\n\n\nEnter Choice : \n");
+    printf("1.Insert at first\t2.Insert at last\t3.Insert after key\n");
+    printf("4.Delete at first\t5.Delete at last\t6.Delete key\n");
+    printf("7.Search for a key\t8.Display the List\t9.Exit\n");
     scanf("%d", &choice);
 
     switch (choice)
@@ -184,10 +216,17 @@ int main()
       printf("\nEnter value :");
       scanf("%d", &info);
       system("@cls||clear");
-      insert(info);
+      insertAtFirst(info);
       display();
       break;
     case 2:
+      printf("\nEnter value :");
+      scanf("%d", &info);
+      system("@cls||clear");
+      insertAtLast(info);
+      display();
+      break;
+    case 3:
       printf("\nEnter key :");
       scanf("%d", &key);
       printf("Enter value :");
@@ -196,36 +235,38 @@ int main()
       insertAfterKey(info, key);
       display();
       break;
-    case 3:
-      system("@cls||clear");
-      display();
-      break;
     case 4:
       system("@cls||clear");
-      del();
-      system("@cls||clear");
+      deleteAtFirst();
       display();
       break;
     case 5:
-    printf("\nEnter key :");
-      scanf("%d", &key);
-      delKey(key);
       system("@cls||clear");
+      deleteAtLast();
       display();
       break;
     case 6:
+      printf("\nEnter key :");
+      scanf("%d", &key);
+      system("@cls||clear");
+      deleteKey(key);
+      display();
+      break;
+    case 7:
       system("@cls||clear");
       search();
       break;
-    case 7:
+    case 8:
+      system("@cls||clear");
+      display();
+      break;
+    case 9:
       return 0;
     default:
+      system("@cls||clear");
       printf("\nWrong Choice\n");
     }
-
   } while (1);
 
   return 0;
 }
-
-
