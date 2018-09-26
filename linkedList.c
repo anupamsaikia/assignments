@@ -73,7 +73,6 @@ void insertAfterKey(int info, int key)
 
 }
 
-
 // delete at last position
 void del()
 {
@@ -124,6 +123,10 @@ void delKey(key)
       // check if only one element is present
       if (ptr1 == start && ptr1->link == NULL)
         start = NULL;
+      // check if key is first element
+      else if(ptr1 == start && ptr1->link != NULL){
+        start = ptr1->link;
+      }
       else
         ptr2->link = ptr1->link;
       free(temp);
