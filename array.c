@@ -1,59 +1,57 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int max = 20;
+const int max = 20;
 int arr[20];
-int i;
-
-//to get length of the array
-int getLength(){
-  for(i = 0; arr[i] != NULL; i++);
-  return i;
-}
+int i, size = 0;
 
 //to display the array
 void display(){
   printf("\n");
-  for(i = 0; arr[i] != NULL; i++)
-    printf("%d  ", arr[i]);
+  if(size == 0)
+    printf("Empty !");
+  else
+    for(i = 0; i < size; i++)
+      printf("%d  ", arr[i]);
   printf("\n");
 }
 
 //insert
 void insert(){
-  if(getLength() == max)
+  if(size == max)
     printf("\nOverflow");
   else{
     int value, pos;
+    printf("Enter position (0 means first): ");
+    scanf("%d", &pos);
     printf("\nEnter value : ");
     scanf("%d", &value);
-    printf("Enter position : ");
-    scanf("%d", &pos);
-    if(pos <= 0 || pos-1>getLength())
+    
+    if(pos < 0 || pos > size)
       printf("\nInvalid position");
     else{
-      for(i = getLength(); i>pos-1; i--)
+      for(i = size; i > pos; i--)
         arr[i] = arr[i-1];
-      arr[pos-1] = value;
+      arr[pos] = value;
+      size++;
     }
   }
 }
 
 void del(){
-  if(getLength() == 0)
+  if(size == 0)
     printf("\nEmpty");
   else{
     int pos;
-    printf("Enter position : ");
+    printf("Enter position to delete (0 means first): ");
     scanf("%d", &pos);
-    if(pos <= 0 || pos>getLength())
+    if(pos < 0 || pos >= size)
       printf("\nInvalid position");
     else{
-      for(i = pos - 1; i<getLength(); i++){
-        printf("test");
+      for(i = pos; i < size - 1; i++){
         arr[i] = arr[i+1];
       }
-        
+      size--;
     }
   }
 }
