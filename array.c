@@ -63,7 +63,7 @@ int main(){
   do
   {
     printf("\n\nEnter Choice : \n");
-    printf("1.Insert\t2.Delete\t3.Exit\n");
+    printf("1.Insert\t2.Delete\t3.Display\t4.Exit\n");
     scanf("%d", &choice);
 
     switch (choice)
@@ -79,6 +79,10 @@ int main(){
       display();
       break;
     case 3:
+      system("@cls||clear");
+      display();
+      break;
+    case 4:
       system("@cls||clear");
       return 0;
     default:
