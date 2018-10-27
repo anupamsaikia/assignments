@@ -11,7 +11,7 @@ void insertion_sort(int *arr, int len){
   }
 }
 
-main()
+int main()
 {
   int arr[] = {1,4,2,3,-5,7,9,7,-54,5,7,6,435,463,-67,6};
   int len = sizeof(arr)/sizeof(arr[0]);
