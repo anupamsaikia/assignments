@@ -25,14 +25,14 @@ void insert(int value)
     }
     else
     {
-      rear = rear + 1;
+      rear++;
     }
 
     queue[rear] = value;
   }
 }
 
-void delete ()
+void delete()
 {
   if (front == -1)
   {
@@ -44,22 +44,33 @@ void delete ()
   }
   else
   {
-    front--;
+    front++;
   }
 }
 
 void display()
 {
   int i;
-  for (i = 0; i < max; i++)
-    printf("%d ", queue[i]);
+  if(rear < front){
+    for (i = front; i < max; i++)
+      printf("%d ", queue[i]);
+    for (i = 0; i<rear; i++)
+      printf("%d ", queue[i]);
+  }
+  else{
+    for (i = front; i<rear; i++)
+      printf("%d ", queue[i]);
+  }
+  
 }
 
 int main()
 {
+  insert(23);
+  insert(65);
   insert(5);
-  insert(6);
-  insert(5);
-  insert(6);
-  display();
+  insert(655);
+
+  printf("%d%d", front, rear);
+  //display();
 }
