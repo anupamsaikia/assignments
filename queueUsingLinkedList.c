@@ -16,7 +16,7 @@ mynode *start = NULL;
 void display()
 {
   if (start == NULL)
-    printf("\n\nEmpty List\n");
+    printf("\n\nEmpty Queue\n");
   else
   {
     mynode *ptr = start;
