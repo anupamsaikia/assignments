@@ -1,3 +1,16 @@
+/* 
+C program to implement single linked list and its various operations
+Operations : 
+  1. Display
+  2. Insert at first
+  3. Insert at last
+  4. Insert after key
+  5. Delete at first
+  6. Delete at Last
+  7. Delete element with given key info
+  8. Search for given key info
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -9,8 +22,6 @@ typedef struct node
 } mynode;
 
 mynode *start = NULL;
-
-// Function Definitions ////////////////////////////////////////////////////////////
 
 // display the linked list
 void display()
@@ -29,6 +40,7 @@ void display()
     printf(" end\n");
   }
 }
+
 //insert a node at first position
 void insertAtFirst(int info)
 {
@@ -45,6 +57,7 @@ void insertAtFirst(int info)
     start = new;
   }
 }
+
 //insert a node at last position
 void insertAtLast(int info)
 {
@@ -63,6 +76,7 @@ void insertAtLast(int info)
     ptr->link = new;
   }
 }
+
 //insert after given key
 void insertAfterKey(int info, int key)
 {
@@ -89,6 +103,7 @@ void insertAfterKey(int info, int key)
     }
   }
 }
+
 // delete at first position
 void deleteAtFirst()
 {
@@ -101,6 +116,7 @@ void deleteAtFirst()
     free(temp);
   }
 }
+
 // delete at last position
 void deleteAtLast()
 {
@@ -127,6 +143,7 @@ void deleteAtLast()
     free(temp);
   }
 }
+
 // delete whose key info is given
 void deleteKey(int key)
 {
@@ -150,11 +167,8 @@ void deleteKey(int key)
     {
       mynode *temp = ptr1;
 
-      // check if only one element is present
-      if (ptr1 == start && ptr1->link == NULL)
-        start = NULL;
-      // check if key is first element
-      else if (ptr1 == start && ptr1->link != NULL)
+      // check if element is in first position
+      if (ptr2 == NULL)
         start = ptr1->link;
       else
         ptr2->link = ptr1->link;
@@ -162,6 +176,7 @@ void deleteKey(int key)
     }
   }
 }
+
 // search an element and show its position
 void search()
 {
@@ -194,8 +209,6 @@ void search()
     }
   }
 }
-
-
 
 int main()
 {

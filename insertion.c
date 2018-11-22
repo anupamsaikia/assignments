@@ -1,6 +1,8 @@
+// C program to implement insertion sort
+
 #include <stdio.h>
 
-void insertion_sort(int *arr, int len){
+void insertion_sort(int arr[], int len){
   int i, j, temp;
 
   for(i = 1; i< len; i++){

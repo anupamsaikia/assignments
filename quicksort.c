@@ -1,5 +1,8 @@
+// C program to implement quick sort taking first element as pivot
+
 #include<stdio.h>
 
+// function to swap two integers
 void swap(int *x, int *y) 
 { 
   int temp = *x; 
@@ -7,8 +10,8 @@ void swap(int *x, int *y)
   *y = temp; 
 }
 
-
-quicksort(int data[], int first, int last){
+// function for quick sort
+quickSort(int data[], int first, int last){
   int lower = first + 1;
   int upper = last;
   int pivot = data[first];
@@ -27,9 +30,9 @@ quicksort(int data[], int first, int last){
   swap(&data[upper], &data[first]);
 
   if(first < upper -1)
-    quicksort(data, first, upper -1);
+    quickSort(data, first, upper -1);
   if(upper + 1 < last)
-    quicksort(data, upper+1, last);
+    quickSort(data, upper+1, last);
 
 }
 
@@ -48,11 +51,10 @@ void main(){
     printf("%d  ", arr[i]);
   printf("\n");
 
-  quicksort(arr, 0, len -1);
+  quickSort(arr, 0, len -1);
 
   printf("Sorted array: ");
   for(i = 0; i < len; i++)
     printf("%d  ", arr[i]);
   printf("\n\n");
 }
-

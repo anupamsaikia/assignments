@@ -1,3 +1,5 @@
+// C program to implement stack using array
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -7,9 +9,10 @@ int stack[10];
 
 void push(int value)
 {
-  if(top == max - 1)
+  if (top == max - 1)
     printf("\nStack is full");
-  else{
+  else
+  {
     top++;
     stack[top] = value;
   }
@@ -25,14 +28,14 @@ void pop()
 
 void display()
 {
-  if (top == -1)       
+  if (top == -1)
     printf("\nEmpty Stack\n");
   else
   {
     int i = top;
     printf("\nTop -> %d |", stack[i]);
     i--;
-    while (i>=0)
+    while (i >= 0)
     {
       printf(" %d |", stack[i]);
       i--;

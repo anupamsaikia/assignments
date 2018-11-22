@@ -1,3 +1,5 @@
+// C program to implement queue using linked list
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -10,9 +12,7 @@ typedef struct node
 
 mynode *start = NULL;
 
-// Function Definitions ////////////////////////////////////////////////////////////
-
-// display the linked list
+// display the queue
 void display()
 {
   if (start == NULL)
@@ -48,7 +48,7 @@ void insert(int info)
 }
 
 // delete at front position
-void delete()
+void delete ()
 {
   if (start == NULL)
     printf("\n\nCan't perform this operation");
@@ -74,7 +74,6 @@ void delete()
   }
 }
 
-
 int main()
 {
 
@@ -97,7 +96,7 @@ int main()
       break;
     case 2:
       system("@cls||clear");
-      delete();
+      delete ();
       display();
       break;
     case 3:
