@@ -39,7 +39,9 @@ void delete ()
 void display()
 {
   int i;
-  if (rear < front)
+  if (front == -1)
+    printf("\n\nEmpty Queue\n");
+  else if (rear < front)
   {
     for (i = front; i < max; i++)
       printf("%d ", queue[i]);
