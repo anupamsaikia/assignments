@@ -1,3 +1,5 @@
+// C program to insert and delete an element from a given array.
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -5,59 +7,68 @@ const int max = 20;
 int arr[20];
 int i, size = 0;
 
-//to display the array
-void display(){
+// display function
+void display()
+{
   printf("\n");
-  if(size == 0)
+  if (size == 0)
     printf("Empty !");
   else
-    for(i = 0; i < size; i++)
+    for (i = 0; i < size; i++)
       printf("%d  ", arr[i]);
   printf("\n");
 }
 
-//insert
-void insert(){
-  if(size == max)
+// insert function
+void insert()
+{
+  if (size == max)
     printf("\nOverflow");
-  else{
+  else
+  {
     int value, pos;
     printf("Enter position (0 means first): ");
     scanf("%d", &pos);
     printf("\nEnter value : ");
     scanf("%d", &value);
-    
-    if(pos < 0 || pos > size)
+
+    if (pos < 0 || pos > size)
       printf("\nInvalid position");
-    else{
-      for(i = size; i > pos; i--)
-        arr[i] = arr[i-1];
+    else
+    {
+      for (i = size; i > pos; i--)
+        arr[i] = arr[i - 1];
       arr[pos] = value;
       size++;
     }
   }
 }
 
-void del(){
-  if(size == 0)
+// delete function
+void del()
+{
+  if (size == 0)
     printf("\nEmpty");
-  else{
+  else
+  {
     int pos;
     printf("Enter position to delete (0 means first): ");
     scanf("%d", &pos);
-    if(pos < 0 || pos >= size)
+    if (pos < 0 || pos >= size)
       printf("\nInvalid position");
-    else{
-      for(i = pos; i < size - 1; i++){
-        arr[i] = arr[i+1];
+    else
+    {
+      for (i = pos; i < size - 1; i++)
+      {
+        arr[i] = arr[i + 1];
       }
       size--;
     }
   }
 }
 
-
-int main(){
+int main()
+{
   int choice;
 
   do
