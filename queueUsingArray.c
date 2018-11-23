@@ -1,10 +1,10 @@
-// C pogram to implement queue using array
+// C program to implement queue using array
 
 #include <stdio.h>
 #include <stdlib.h>
 
 const int max = 10;
-int queue[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+int queue[10];
 int front = -1;
 int rear = -1;
 
@@ -27,10 +27,10 @@ void insert(int value)
 void delete ()
 {
   if (front == -1)
-    printf("Empty Queue");
+    printf("\nCannot perform this operation");
   else if (front == rear)
-    front = rear = -1;
-  else if (front == max-1)
+    front = -1;
+  else if (front == max - 1)
     front = 0;
   else
     front++;
