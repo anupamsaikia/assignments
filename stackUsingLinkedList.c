@@ -1,4 +1,4 @@
-// C program to implement stack using array
+// C program to implement stack using linked list
 
 #include <stdio.h>
 #include <stdlib.h>
